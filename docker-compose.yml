@@ -2,6 +2,14 @@ version: "3.8"
 
 services:
   fastapi_app:
+    container_name: fastapi-app
     build: .
     ports:
       - "8000:8000"
+    restart: unless-stopped
+    networks:
+      - fastapi_network
+
+networks:
+  fastapi_network:
+    driver: bridge
